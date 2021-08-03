@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Weather App</title>
+    <meta charset="UTF-8" />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://kit.fontawesome.com/3f50e0e8ce.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato&family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+
+  <body>
+    <div class="container" >
+      <div class="card main-card">
+        <div id="app-background">
+        <div class="card-body">
+          <h1>Weather App</h1>
+          <section class="search">
+            
+            <form id="search-form">
+              <div class="row">
+                <div class="col-8" >
+              <input
+                class="search-bar"
+                type="text"
+                placeholder=" Type a city . . ."
+                autocomplete="off"
+                autofocus="on"
+                id="city-input"
+              />
+            </div>
+            <div class="col-4">
+              <input type="submit" value="Search" class="btn btn-light button w-100" />
+            </div>
+            </form>
+          </section>
+          <h2 id="date"></h2>
+
+          <h3 id="city"></h3>
+          <br />
+          <img src="" alt="Partly cloudy" id="icon" />
+          <div class="todays-temp">
+            <span class="temperature" id="temperature"></span><span class="units">
+            <a href="#" id="celsius-link">°C</a> |
+            <a href="#" id="fahrenheit-link">°F</a>
+          </span>
+        </div>
+          <div>
+            <ul>
+              <li id ="description"></li> 
+            <li>Humidity : <span id ="humidity"></span>%</li>
+            <li>Wind : <span id = "wind"></span>km/h</li>
+          </ul>
+        </div>
+          <div class="card week-days-card">
+            <div class="card-body">
+              <div class="row week-days">
+                <div class="col">Fri</div>
+                <div class="col">Sat</div>
+                <div class="col">Sun</div>
+                <div class="col">Mon</div>
+                <div class="col">Tues</div>
+              </div>
+              <div class="row week-days-icons">
+                <div class="col"><i class="fas fa-sun sun-icon"></i></div>
+                <div class="col"><i class="fas fa-cloud cloud-icon"></i></div>
+                <div class="col"><i class="fas fa-sun sun-icon"></i></div>
+                <div class="col"><i class="fas fa-cloud cloud-icon"></i></div>
+                <div class="col"><i class="fas fa-sun sun-icon"></i></div>
+              </div>
+              <div class="row">
+                <div class="col">22°C</div>
+                <div class="col">23°C</div>
+                <div class="col">24°C</div>
+                <div class="col">26°C</div>
+                <div class="col">29°C</div>
+              </div>
+            </div>
+          </div> <small>This project was coded by Justyna Bacela and is
+            <a href="https://github.com/JustynaBCL/Weather-app-VANILLA"
+              >open-sourced on Github</a
+            > and <a href=""> hosted on Netlify</a>
+          </small></div>
+        </div>
+       
+    </div>
+  </div>
+    <script src="src/index.js"></script>
+  </body>
+</html>
