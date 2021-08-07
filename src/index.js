@@ -18,20 +18,50 @@ function formatDate(date) {
     "Friday",
     "Saturday",
   ];
-
   let day = days[dayIndex];
-
   return `${day} ${hours}:${minutes}`;
+}
+
+function displayForecast(response) {
+  console.log(response.data.daily);
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Sat", "Sun", "Mon", "Tues", "Wed"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-2">
+  <div class="weather-forecast-date">${day}</div>
+  <img
+  src="http://openweathermap.org/img/wn/50d@2x.png"
+  alt=""
+  width="60"/>
+  <div class="weather-forecast-temperatures">
+  <span class="weather-forecast-temperature-max">18°</span>
+  <span class="weather-forecast-temperature-min">12°</span>
+  </div>
+  </div>
+  `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "9797231abb88fd82a3336fd9a24cba7c";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function displayWeatherCondition(response) {
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#temperature").innerHTML = Math.round(
     response.data.main.temp
-    
   );
-
-  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
@@ -44,6 +74,8 @@ function displayWeatherCondition(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  getForecast(response.data.coord);
   
 }
 
@@ -90,5 +122,3 @@ celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 search("Lodz");
 
-
-    document.getElementById("app-background").style.backgroundImage = "url('https://images.unsplash.com/photo-1557683304-673a23048d34?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTF8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60')";
