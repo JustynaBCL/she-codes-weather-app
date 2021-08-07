@@ -111,3 +111,8 @@ p {
   background-size: cover;
   background: #0278ae;
 }
+#description {
+  font-size: 17px;
+  margin-top: -6px;
+  margin-bottom: 6px;
+}
